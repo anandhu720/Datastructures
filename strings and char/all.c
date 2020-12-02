@@ -191,12 +191,26 @@ int duphash(char a[])
     }
 }
 
+//duplicate char in string for uppercase
+int duphash1(char a[])
+{
+    int hash[26]={0};
+    int i;
+    for(i=0;a[i]!='\0';i++)
+        hash[a[i]-65]++;
+    for(int i=0;i<26;i++)
+    {
+        if(hash[i]>1)
+            printf("the letter %c is repating %d times\n",i+65,hash[i]);
+    }
+}
+
 
 int main()
 {
     char a[100];
     printf("enter the string: ");
     gets(a);
-    duphash(a);
+    duphash1(a);
     return 0;
 }

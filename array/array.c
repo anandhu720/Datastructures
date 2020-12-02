@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-//git try is a indi
+
 
  struct array
  {

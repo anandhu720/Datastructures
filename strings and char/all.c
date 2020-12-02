@@ -157,12 +157,31 @@ int compre()
         printf("strings are not palindrome\n");
 }
 
+//find duplicates in a string
+int duplicate(char a[])          //doubt
+{
+    int last_duplicate=0,count=0;
+    for(char i=0;a[i]!='\0';i++)
+    {
+        
+        for(char j=1;a[j]!='\0';j++)
+        {
+            i=a[i];
+            if(i==a[j] && i!=last_duplicate)
+            {
+                count++;
+                printf("%c\n",i);
+                last_duplicate=i;
+            }
+        }
+    }
+}
 
 int main()
 {
     char a[100];
     printf("enter the string: ");
     gets(a);
-    compre();
+    duplicate(a);
     return 0;
 }

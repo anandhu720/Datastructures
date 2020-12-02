@@ -177,11 +177,26 @@ int duplicate(char a[])          //doubt
     }
 }
 
+//finding duplicates by hash table
+int duphash(char a[])
+{
+    int hash[26]={0};
+    int i;
+    for(i=0;a[i]!='\0';i++)
+        hash[a[i]-97]++;
+    for(int i=0;i<26;i++)
+    {
+        if(hash[i]>1)
+            printf("the letter %c is repating %d times\n",i+97,hash[i]);
+    }
+}
+
+
 int main()
 {
     char a[100];
     printf("enter the string: ");
     gets(a);
-    duplicate(a);
+    duphash(a);
     return 0;
 }

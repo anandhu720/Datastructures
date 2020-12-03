@@ -53,10 +53,11 @@ int main()
 
     //userdefined functions
     set(&m,1,1,5);set(&m,2,2,8);set(&m,3,3,9);set(&m,4,4,1);set(&m,5,5,3);
+    printf("%d\n",get(m,3,3));
     display(m);
 
 
 
-    
+
     return 0;
 }

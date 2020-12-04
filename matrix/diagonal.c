@@ -41,14 +41,12 @@ void display(struct matrix m)
 
 int main()
 {
-    int size;
     struct matrix m;
-    printf("Enter the size of array: ");
-    scanf("%d",&size);
+    printf("Enter the dimension of array: ");
+    scanf("%d",&m.n);
 
     //delcearing dynamic array
-    m.a=(int *)malloc(size*sizeof(int));
-    m.n=5;
+    m.a=(int *)malloc(10*sizeof(int));
 
 
     //userdefined functions

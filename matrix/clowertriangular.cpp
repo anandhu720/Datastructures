@@ -2,7 +2,7 @@
 using namespace std;
 
 
-//program of diagonal matrix using class in c++
+//program of lower triangular matrix using class in c++
 class lowertriangular
 {
     private:
@@ -12,12 +12,12 @@ class lowertriangular
         lowertriangular()
         {
             int n=2;
-            a=new int[2];
+            a=new int[2*(2+1)/2];
         }
         lowertriangular(int n)
         {
             this->n=n;
-            a=new int[n];
+            a=new int[n*(n+1)/2];
         }
         ~lowertriangular()
         {
@@ -31,14 +31,14 @@ class lowertriangular
 
 void lowertriangular::set(int i,int j,int x)
 {
-    if(i==j)
-        a[i-1]=x;
+    if(i>=j)
+        a[i*i-1/2+j-1]=x;
 }
 
 int lowertriangular::get(int i,int j)
 {
-    if(i==j)
-        return a[i-1];
+    if(i>=j)
+        return a[i*i-1/2+j-1];
     else 
         return 0;
 }
@@ -46,12 +46,12 @@ int lowertriangular::get(int i,int j)
 void lowertriangular::display()
 {
     int i,j;
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
     {
-        for(j=0;j<n;j++)
+        for(j=1;j<=n;j++)
         {
-            if(i==j)
-                cout<<a[i]<<" ";
+            if(i>=j)
+                cout<<a[i*i-1/2+j-1]<<" ";
             else 
                 cout<<"0 ";
         }
@@ -61,12 +61,20 @@ void lowertriangular::display()
 
 int main()
 {
-    lowertriangular d(4);
-    d.set(1,1,5);
-    d.set(2,2,6);
-    d.set(3,3,8);
-    d.set(4,4,3);
-
-    d.display();
+    int d,x;
+    cout<<"Enter the dimension :";
+    cin>>d;
+    lowertriangular lr(d);  //object
+    cout<<"enter all elements: \n";
+    for(int i=1;i<=d;i++)   //entering elements to array
+    {
+        for(int j=1;j<=d;j++)
+        {
+            cin>>x;
+            lr.set(i,j,x);   //setting
+        }
+    }
+    cout<<"\n\n\n";
+    lr.display();
     return 0;
 }

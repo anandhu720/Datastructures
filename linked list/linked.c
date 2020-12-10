@@ -57,11 +57,51 @@ void reversedisplay(struct node *p)
     }
 }
 
+//counting nodes
+int node_count(struct node *p)
+{
+    int count=0;
+    while(p!=NULL)
+    {
+        count++;
+        p=p->next;
+    }
+    return count;
+}
+
+//counting nodes by recursion
+int rnode_count(struct node *p)
+{
+    if(p==NULL)
+        return 0;
+    return rnode_count(p->next)+1;
+}
+
+//sum of elements in a linked list
+int sum(struct node *p)
+{
+    int sum=0;
+    while(p!=NULL)
+    {
+        sum+=p->data;
+        p=p->next;
+    }
+    return sum;
+}
+
+//sum of elements using recursion
+int rsum(struct node *p)
+{
+    if (p==0)
+        return 0;
+    return rsum(p->next)+p->data;
+}
+
 int main()
 {
-    int a[]={2,3,4,5,6};
-    create(a,5);
-    reversedisplay(head);
+    int a[]={2,3,4,5,6,3,4};
+    create(a,7);
+    printf("the lenght of linked list is %d",rsum(head));
     printf("\n");
     return 0;
 }

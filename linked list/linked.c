@@ -97,11 +97,24 @@ int rsum(struct node *p)
     return rsum(p->next)+p->data;
 }
 
+//mult of elements 
+int mult(struct node *p)
+{
+    int mult=1;
+    while(p!=NULL)
+    {
+        mult*=p->data;
+        p=p->next;
+    }
+    return mult;
+}
+
+
 int main()
 {
     int a[]={2,3,4,5,6,3,4};
     create(a,7);
-    printf("the lenght of linked list is %d",rsum(head));
+    printf("the lenght of linked list is %d",node_count(head));
     printf("\n");
     return 0;
 }

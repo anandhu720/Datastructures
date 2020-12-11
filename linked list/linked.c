@@ -109,12 +109,83 @@ int mult(struct node *p)
     return mult;
 }
 
+//max element in linked list
+int max(struct node *p)
+{
+    int max=-3845;
+    while(p!=NULL)
+    {
+        if(p->data > max)
+            max=p->data;
+        p=p->next;
+    }
+    return max;
+}
+
+//max element by recursion
+int rmax(struct node *p)
+{
+    int x;
+
+    if(p==NULL)
+        return 0;
+    x=max(p->next);
+    return x>p->data?x:p->data;
+}
+
+//linear search in linked list
+struct node * linear(struct node *p,int key)
+{
+    while(p!=NULL)
+    {
+        if(p->data==key)
+            return p;
+        p=p->next;
+    }
+    return NULL;
+}
+
+//linear search by recursion
+struct node * rlinear(struct node *p,int key)
+{
+    if(p==NULL)
+        return NULL;
+    if(p->data==key)
+        return p;
+    return rlinear(p->next,key);
+}
+
+//linear search by moving head
+struct node * linear_move(struct node *p,int key)
+{
+    struct node *q=NULL;
+    while (p!=NULL)
+    {
+        if(p->data==key)
+        {
+            q->next=p->next;
+            p->next=head;
+            head=p;
+            return p;
+        }
+        q=p;
+        p=p->next;
+    }
+    return NULL;
+}
 
 int main()
 {
-    int a[]={2,3,4,5,6,3,4};
+    struct node *t;
+    int a[]={2,3,14,5,6,1,4};
     create(a,7);
-    printf("the lenght of linked list is %d",node_count(head));
+    t=linear_move(head,6);
+    if(t!=NULL)
+        printf("the element is found %d",t->data);
+    else 
+        printf("element is not found");
+    printf("\n");
+    display(head);
     printf("\n");
     return 0;
 }

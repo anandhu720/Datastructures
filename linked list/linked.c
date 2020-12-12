@@ -196,20 +196,50 @@ void insert(struct node *p,int index,int x)
     
 }
 
+
+//deleting an element
+int delete_node(struct node *p,int index)
+{
+    struct node *q=NULL;
+    int x=-1;
+
+    if (index < 1 || index > node_count(p))
+        return -1;
+    if(index == 1)
+    {
+        q=head;
+        x=head->data;
+        head=head->next;
+        free (q);
+        return x;
+    }
+    else
+    {
+        for(int i=0;i<index-1;i++)
+        {
+            q=p;
+            p=p->next;
+        }
+        q->next=p->next;
+        x=p->data;
+        free (p);
+        return x;
+    }
+    
+}
+
 int main()
 {
     struct node *t;
-    //int a[]={2,3,14};
-    //create(a,3);
+    int a[]={20,30,14,23,1};
+    create(a,5);
+    delete_node(head,1);
 /* t=linear_move(head,6);
     if(t!=NULL)
         printf("the element is found %d",t->data);
     else 
         printf("element is not found");
     printf("\n"); */
-    insert(head,0,10);
-    insert(head,1,20);
-    insert(head,2,30);
     display(head);
     printf("\n");
     return 0;

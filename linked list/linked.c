@@ -174,17 +174,42 @@ struct node * linear_move(struct node *p,int key)
     return NULL;
 }
 
+void insert(struct node *p,int index,int x)
+{
+    struct node *t;
+    t=(struct node *)malloc(sizeof(struct node));
+    t->data=x;
+    if( index < 0 || index > node_count(p))
+        return;
+    if (index == 0)
+    {
+        t->next=head;
+        head=t;
+    }
+    else 
+    {
+        for(int i=0;i<index-1;i++)
+            p=p->next;
+        t->next=p->next;
+        p->next=t;
+    }
+    
+}
+
 int main()
 {
     struct node *t;
-    int a[]={2,3,14,5,6,1,4};
-    create(a,7);
-    t=linear_move(head,6);
+    //int a[]={2,3,14};
+    //create(a,3);
+/* t=linear_move(head,6);
     if(t!=NULL)
         printf("the element is found %d",t->data);
     else 
         printf("element is not found");
-    printf("\n");
+    printf("\n"); */
+    insert(head,0,10);
+    insert(head,1,20);
+    insert(head,2,30);
     display(head);
     printf("\n");
     return 0;

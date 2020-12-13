@@ -174,6 +174,7 @@ struct node * linear_move(struct node *p,int key)
     return NULL;
 }
 
+//inserting elements to linked list
 void insert(struct node *p,int index,int x)
 {
     struct node *t;
@@ -228,18 +229,61 @@ int delete_node(struct node *p,int index)
     
 }
 
+//checking if linked list is sorted or not
+//only for sorted linked list
+int ifsorted(struct node *p)
+{
+    int x=-65536;
+    while(p!=NULL)
+    {
+        if(p->data < x)
+            return 0;
+        x=p->data;
+        p=p->next;
+    }
+    return 1;
+}
+
+//deleting duplicate elemnts in linked list
+void delete_duplicate(struct node *p)
+{
+    struct node *q=p->next;
+    while(q!=NULL)
+    {
+        if(p->data != q->data)
+        {
+            p=q;
+            q=q->next;
+        }
+        else
+        {
+            p->next=q->next;
+            free(q);
+            q=p->next;
+        }  
+    }
+}
+
 int main()
 {
     struct node *t;
-    int a[]={20,30,14,23,1};
+    int a[]={20,20,3,40,40};
     create(a,5);
-    delete_node(head,1);
-/* t=linear_move(head,6);
+   if(ifsorted(head)==1)
+    {
+        printf("it is sorted\n");
+        delete_duplicate(head);
+    }
+    else if(ifsorted(head)==0)
+        printf("not sorted\n");
+  /*  t=linear_move(head,6);
     if(t!=NULL)
         printf("the element is found %d",t->data);
     else 
         printf("element is not found");
     printf("\n"); */
+
+   
     display(head);
     printf("\n");
     return 0;

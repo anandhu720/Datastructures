@@ -130,7 +130,7 @@ int mult(struct node *p)
 //max element in linked list
 int max(struct node *p)
 {
-    int max=-3845;
+    int max=-65536;
     while(p!=NULL)
     {
         if(p->data > max)

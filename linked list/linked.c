@@ -264,26 +264,64 @@ void delete_duplicate(struct node *p)
     }
 }
 
+//reversing a linked list
+
+//reversing using swapping of elements
+void reverse_element(struct node *p)
+{
+    int *a,i;
+    a=(int *)malloc(node_count(p)*sizeof(int));
+    while(p!=NULL)
+    {
+        a[i++]=p->data;
+        p=p->next;
+    }
+    p=head;
+    i--;
+    while (p!=NULL)
+    {
+        p->data=a[i--];
+        p=p->next;
+    }
+}
+
+//reversing by changing links
+void reverse_link(struct node *p)
+{
+    struct node *q=NULL,*r=NULL;
+    while(p!=NULL)
+    {
+        r=q;
+        q=p;
+        p=p->next;
+        q->next=r;
+    }
+    head=q;
+}
+
+//reversing by recursion
+int reverse_recursion(struct node *q,struct node *p)
+{
+    if(p!=NULL)
+    {
+        reverse_recursion(p,p->next);
+        p->next=q;
+    }
+    else
+    {
+        head=q;
+    }
+    
+}
+
 int main()
 {
     struct node *t;
-    int a[]={20,20,3,40,40};
-    create(a,5);
-   if(ifsorted(head)==1)
-    {
-        printf("it is sorted\n");
-        delete_duplicate(head);
-    }
-    else if(ifsorted(head)==0)
-        printf("not sorted\n");
-  /*  t=linear_move(head,6);
-    if(t!=NULL)
-        printf("the element is found %d",t->data);
-    else 
-        printf("element is not found");
-    printf("\n"); */
+    int a[]={20,3,5,6};
+    create(a,4);
+    
+    
 
-   
     display(head);
     printf("\n");
     return 0;

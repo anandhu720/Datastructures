@@ -5,7 +5,7 @@ struct node
 {
     int data;
     struct node *next;
-}*head=NULL;
+}*head=NULL,*head2=NULL,*last=NULL;
 
 //creating linked list
 void create(int a[],int n)
@@ -20,6 +20,24 @@ void create(int a[],int n)
     {
         t=(struct node *)malloc(sizeof(struct node));
         t->data=a[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+
+void create2(int b[],int n)
+{
+    struct node *t,*last;
+    head2=(struct node *)malloc(sizeof(struct node));
+    head2->data=b[0];
+    head2->next=NULL;
+    last=head2;
+
+    for(int i=1;i<n;i++)
+    {
+        t=(struct node *)malloc(sizeof(struct node));
+        t->data=b[i];
         t->next=NULL;
         last->next=t;
         last=t;
@@ -314,15 +332,28 @@ int reverse_recursion(struct node *q,struct node *p)
     
 }
 
+//concatinating linked list
+void concat(struct node *p,struct node *q)
+{
+    last=p;
+    while(p->next!=NULL)
+        p=p->next;
+    p->next=q;
+}
+
+
 int main()
 {
     struct node *t;
     int a[]={20,3,5,6};
+    int b[]={1,2,3,4};
     create(a,4);
+    create2(b,4);
     
-    
-
+    concat(head,head2);
+    printf("concat ans\n");
     display(head);
     printf("\n");
+
     return 0;
 }

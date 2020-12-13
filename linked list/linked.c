@@ -379,22 +379,40 @@ int merge(struct node *p,struct node *q)
         last->next=q;
     else 
         last->next=q;
+}
 
+//checking wheather linked list contains a loop
+int if_loop (struct node *f)
+{
+    struct node *p,*q;
+    p=q=f;
+    do
+    {
+        p=p->next;
+        q=q->next;
+        q=q!=NULL?q->next:q;
+    }while (p!=NULL && q!=NULL && p!=q);
+    
+    if (p==q)
+        return 1;
+    else 
+        return 0;
 }
 
 
 int main()
 {
-    struct node *t;
+    struct node *t1,*t2;
     int a[]={1,3,5,7};
-    int b[]={2,4,6,8};
+
     create(a,4);
-    create2(b,4);
+
+    //created a loop in linked list
+    t1=head->next->next;
+    t2=head->next->next->next;
+    t2->next=t1;
     
-    merge(head,head2);
-    printf("concat ans\n");
-    display(third);
-    printf("\n");
+    printf("%d\n",if_loop(head));
 
     return 0;
 }

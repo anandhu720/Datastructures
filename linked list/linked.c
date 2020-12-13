@@ -5,7 +5,7 @@ struct node
 {
     int data;
     struct node *next;
-}*head=NULL,*head2=NULL,*last=NULL;
+}*head=NULL,*head2=NULL,*third=NULL;
 
 //creating linked list
 void create(int a[],int n)
@@ -335,24 +335,65 @@ int reverse_recursion(struct node *q,struct node *p)
 //concatinating linked list
 void concat(struct node *p,struct node *q)
 {
-    last=p;
+    third=p;
     while(p->next!=NULL)
         p=p->next;
     p->next=q;
+}
+
+//merging two sorted linked list
+
+int merge(struct node *p,struct node *q)
+{
+    struct node *last;
+    if(p->data < q->data)
+    {
+        third=last=p;
+        p=p->next;
+        last->next=NULL;
+    }
+    else
+    {
+        third=last=q;
+        q=q->next;
+        last->next=NULL;
+    }
+    while(p!=NULL && q!=NULL)
+    {
+        if(p->data < q->data)
+        {
+            last->next=p;
+            last=p;
+            p=p->next;
+            last->next=NULL;
+        }
+        else
+        {
+            last ->next=q;
+            last=q;
+            q=q->next;
+            last->next=NULL;
+        }
+    }
+    if (p!=NULL)
+        last->next=q;
+    else 
+        last->next=q;
+
 }
 
 
 int main()
 {
     struct node *t;
-    int a[]={20,3,5,6};
-    int b[]={1,2,3,4};
+    int a[]={1,3,5,7};
+    int b[]={2,4,6,8};
     create(a,4);
     create2(b,4);
     
-    concat(head,head2);
+    merge(head,head2);
     printf("concat ans\n");
-    display(head);
+    display(third);
     printf("\n");
 
     return 0;

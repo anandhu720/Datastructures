@@ -26,9 +26,9 @@ class linkedlist
         int rsum(node *p);
         int mult();
         int max();
-        //int rmax();
+        int rmax(node *p);
         int linear(int key);
-        //int rlinear(int key);
+        int rlinear(node *p,int key);
         int linear_move(int key);
         void insert(int index,int x);
         int delete_node(int index);
@@ -159,8 +159,19 @@ int linkedlist::max()   //max element in linked list
             num=p->data;
         p=p->next;
     }
-    return num;
+    return 
+    num;
 }
+
+int linkedlist::rmax(node *p)  //max element by recursion
+{
+    int x;
+    if (p==NULL)
+        return 0;
+    x=rmax(p->next);
+    return x>p->data?x:p->data;
+}
+
 
 int linkedlist::linear(int key)   //linear search in linked list
 {
@@ -172,6 +183,15 @@ int linkedlist::linear(int key)   //linear search in linked list
         p=p->next;
     }
     return 0;
+}
+
+int linkedlist::rlinear(node *p,int key)   //linear search by recursion
+{
+    if(p==NULL)
+        return 0;
+    if(p->data == key)
+        return p->data;
+    return rlinear(p->next,key);
 }
 
 
@@ -224,8 +244,9 @@ int main()
     int a[]={1,2,3,4,5};
     linkedlist l(a,5);
 
-    //l.insert(2,21);
-    l.reversedisplay(l.head);
+    l.insert(3,234);
+
+    cout<<l.rmax(l.head)<<"\n";
 
     cout<<"\n";
     return 0;

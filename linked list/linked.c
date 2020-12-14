@@ -147,7 +147,7 @@ int rmax(struct node *p)
 
     if(p==NULL)
         return 0;
-    x=max(p->next);
+    x=rmax(p->next);
     return x>p->data?x:p->data;
 }
 
@@ -318,7 +318,7 @@ void reverse_link(struct node *p)
 }
 
 //reversing by recursion
-int reverse_recursion(struct node *q,struct node *p)
+void reverse_recursion(struct node *q,struct node *p)
 {
     if(p!=NULL)
     {

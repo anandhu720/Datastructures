@@ -29,14 +29,14 @@ class linkedlist
         int rmax(node *p);
         int linear(int key);
         int rlinear(node *p,int key);
-        int linear_move(int key);
+        int linear_move(int key);  //doubt
         void insert(int index,int x);
         int delete_node(int index);
         int if_sorted();
         void delete_duplicates();
         void reverse_element();
         void reverse_link();
-        //void reverse_recursion();
+        void reverse_recursion();
         void concat();
         int merge();
         int if_loop();

@@ -14,14 +14,15 @@ void create(int a[], int n)
     struct node *t, *last;
     head = (struct node *)malloc(sizeof(struct node));
     head->data = a[0];
-    head->prev = head->next = NULL;
+    head->prev = NULL;
+    head->next = NULL;
     last = head;
 
     for (int i = 1; i < n; i++)
     {
         t = (struct node *)malloc(sizeof(struct node));
         t->data = a[i];
-        t->next = last->next;
+        t->next = NULL;
         t->prev = last;
         last->next = t;
         last = t;
@@ -91,15 +92,44 @@ int max(struct node *p)
     return x;
 }
 
+//delete element doubly linked list
+int delete_nodes(struct node *p, int index)
+{
+    int x = -1;
+    if (index < 1 || index > node_count(head))
+    {
+        return -1;
+    }
+
+    if (index == 1)
+    {
+        head = head->next;
+        if (head)
+            head->prev = NULL;
+        x = p->data;
+        free(p);
+    }
+    else
+    {
+        for (int i = 0; i < index - 1; i++)
+            p = p->next;
+        p->prev->next = p->next;
+        if (p->next != NULL)
+            p->next->prev = p->prev;
+        x = p->data;
+        free(p);
+    }
+    return x;
+}
+
 //main function
 int main()
 {
     int a[] = {1, 2, 3, 4, 5};
     create(a, 5);
-    insert(head, 2, 32);
 
     //printf("the lenght is %d\n", node_count(head));
-
+    delete_nodes(head, 1);
     display(head);
     printf("\n");
     return 0;

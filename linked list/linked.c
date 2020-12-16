@@ -401,12 +401,16 @@ int main()
 
     create(a, 4);
 
-    //created a loop in linked list
+    /* //created a loop in linked list
     t1 = head->next->next;
     t2 = head->next->next->next;
     t2->next = t1;
 
-    printf("%d\n", if_loop(head));
+    printf("%d\n", if_loop(head));  */
+
+    delete_node(head, 1);
+
+    display(head);
 
     return 0;
 }

@@ -50,6 +50,43 @@ void display()
     }
 }
 
+//getting and element from stack by using linkedlist
+int peek(int index)
+{
+    struct node *p = top;
+    for (int i = 0; p != NULL && i < index - 1; i++)
+        p = p->next;
+    if (p != NULL)
+        return p->data;
+    return -1;
+}
+
+//last element in stack by using linkedlist
+int stacktop()
+{
+    if (top != NULL)
+        return top->data;
+    else
+        return -1;
+}
+
+//checking if stack is full
+int iffull()
+{
+    struct node *p = (struct node *)malloc(sizeof(struct node));
+    int r = p != NULL ? 0 : 1;
+    free(p);
+    return r;
+}
+
+//checking if stack is zero
+int ifempty()
+{
+    if (top == NULL)
+        return 1;
+    return 0;
+}
+
 //main function
 int main()
 {
@@ -59,6 +96,8 @@ int main()
     push(40);
 
     display();
+
+    printf("\n%d", peek(3));
     printf("\n");
     return 0;
 }

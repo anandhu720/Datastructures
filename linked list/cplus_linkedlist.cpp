@@ -39,9 +39,6 @@ public:
     void reverse_element();
     void reverse_link();
     void reverse_recursion(node *q, node *p);
-    void concat();
-    int merge();
-    int if_loop();
 };
 
 linkedlist::linkedlist(int a[], int n)
@@ -344,18 +341,6 @@ void linkedlist::reverse_recursion(node *q, node *p) //rversing by recursion
     {
         head = q;
     }
-}
-
-//operation of more than one linked list
-
-void linkedlist::concat() //concatinating linked list
-{
-    node *p = head;
-    node *q = head2;
-    third = p;
-    while (p != NULL)
-        p = p->next;
-    p->next;
 }
 
 int main()

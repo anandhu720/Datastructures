@@ -411,6 +411,4 @@ int main()
     delete_node(head, 1);
 
     display(head);
-
-    return 0;
 }

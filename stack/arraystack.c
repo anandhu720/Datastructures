@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//stack creation
 struct stack
 {
     int size;

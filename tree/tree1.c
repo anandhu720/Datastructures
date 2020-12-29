@@ -10,6 +10,7 @@ void tree_create()
     struct tnode *p, *t;
     int x;
 
+    //entering root node
     printf("enter the value of root node\n");
     scanf("%d", &x);
     root = (struct tnode *)malloc(sizeof(struct tnode));
@@ -17,6 +18,7 @@ void tree_create()
     root->leftchild = root->rightchild = NULL;
     enqueue(root);
 
+    //entering lef and right nodes
     while (isEmpty() != 1)
     {
         p = dequeue();
@@ -43,6 +45,7 @@ void tree_create()
     }
 }
 
+//displaying tree using preorder
 void preorder(struct tnode *p)
 {
     if (p != NULL)
@@ -50,6 +53,28 @@ void preorder(struct tnode *p)
         printf("%d ", p->data);
         preorder(p->leftchild);
         preorder(p->rightchild);
+    }
+}
+
+//displaying tree using inorder
+void inorder(struct tnode *p)
+{
+    if (p != NULL)
+    {
+        inorder(p->leftchild);
+        printf("%d ", p->data);
+        inorder(p->rightchild);
+    }
+}
+
+//displaying tree using postorder
+void postorder(struct tnode *p)
+{
+    if (p != NULL)
+    {
+        postorder(p->leftchild);
+        postorder(p->rightchild);
+        printf("%d ", p->data);
     }
 }
 

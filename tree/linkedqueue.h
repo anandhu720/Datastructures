@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//tree node
 struct tnode
 {
     struct tnode *leftchild;
@@ -8,6 +9,7 @@ struct tnode
     struct tnode *rightchild;
 };
 
+//queue node
 struct qnode
 {
     struct tnode *data; //

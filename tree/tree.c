@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "queue.h"
+#include "arrayqueue.h"
 
 struct node *root = NULL;
 

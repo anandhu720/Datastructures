@@ -4,6 +4,7 @@
 
 struct node *root = NULL;
 
+//creating tree
 void create_tree()
 {
     struct node *p, *t;
@@ -11,6 +12,7 @@ void create_tree()
     struct queue q;
     create(&q, 100);
 
+    //entering root node
     printf("enter the value of root node\n");
     scanf("%d", &x);
     root = (struct node *)malloc(sizeof(struct node));
@@ -18,6 +20,7 @@ void create_tree()
     root->leftchild = root->rightchild = NULL;
     enqueue(&q, root);
 
+    //entering left and right node
     while (!isEmpty(q))
     {
         p = dequeue(&q);
@@ -44,6 +47,7 @@ void create_tree()
     }
 }
 
+//dislaying tree using preorder
 void preorder(struct node *p)
 {
     if (p != NULL)
@@ -51,6 +55,28 @@ void preorder(struct node *p)
         printf("%d ", p->data);
         preorder(p->leftchild);
         preorder(p->rightchild);
+    }
+}
+
+//dsplaying tree using inorder
+void inorder(struct node *p)
+{
+    if (p != NULL)
+    {
+        inorder(p->leftchild);
+        printf("%d ", p->data);
+        inorder(p->rightchild);
+    }
+}
+
+//displaying tree using postorder
+void postorder(struct node *p)
+{
+    if (p != NULL)
+    {
+        postorder(p->leftchild);
+        postorder(p->rightchild);
+        printf("%d ", p->data);
     }
 }
 

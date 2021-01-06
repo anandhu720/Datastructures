@@ -55,3 +55,41 @@ void tree::createtree()
         }
     }
 }
+
+void tree::preorder(node *p)
+{
+    if (p != NULL)
+    {
+        printf("%d ", p->data);
+        preorder(p->leftchild);
+        preorder(p->rightchild);
+    }
+}
+
+void tree::inorder(node *p)
+{
+    if (p != NULL)
+    {
+        inorder(p->leftchild);
+        printf("%d ", p->data);
+        inorder(p->rightchild);
+    }
+}
+
+void tree::postorder(node *p)
+{
+    if (p != NULL)
+    {
+        postorder(p->leftchild);
+        postorder(p->rightchild);
+        printf("%d ", p->data);
+    }
+}
+
+int main()
+{
+    tree t;
+    t.createtree();
+    t.preorder(t.root);
+    return 0;
+}

@@ -49,13 +49,6 @@ void queue::enqueue(node *x)
     }
 }
 
-void queue::display()
-{
-    for (int i = front + 1; i <= rear; i++)
-        printf("%d ", Q[i]);
-    printf("\n");
-}
-
 node *queue::dequeue()
 {
     node *x = NULL;

@@ -12,9 +12,10 @@ public:
     void postorder(node *p);
     void inorder(node *p);
     void levelorder(node *p);
-    void height(node *root);
+    int height(node *p);
 };
 
+//creating a tree
 void tree::createtree()
 {
     node *p, *t;
@@ -56,6 +57,8 @@ void tree::createtree()
     }
 }
 
+//dispalying tree in various forms
+
 void tree::preorder(node *p)
 {
     if (p != NULL)
@@ -86,10 +89,25 @@ void tree::postorder(node *p)
     }
 }
 
+//finding height of a tree
+int tree::height(node *p)
+{
+    int x = 0, y = 0;
+    if (p == NULL)
+        return 0;
+    x = height(p->leftchild);
+    y = height(p->rightchild);
+    if (x > y)
+        return x + 1;
+    return y + 1;
+}
+
 int main()
 {
     tree t;
     t.createtree();
     t.preorder(t.root);
+    std::cout << "\n";
+    std::cout << t.height(t.root) << "\n";
     return 0;
 }

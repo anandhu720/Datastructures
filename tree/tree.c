@@ -80,6 +80,19 @@ void postorder(struct node *p)
     }
 }
 
+//height of the tree
+int height(struct node *p)
+{
+    int x = 0, y = 0;
+    if (p != NULL)
+        return 0;
+    x = height(p->leftchild);
+    y = height(p->rightchild);
+    if (x > y)
+        return x + 1;
+    return y + 1;
+}
+
 int main()
 {
     create_tree();

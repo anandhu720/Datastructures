@@ -78,6 +78,19 @@ void postorder(struct tnode *p)
     }
 }
 
+//finding height of a tree
+int height(struct tnode *p)
+{
+    int x = 0, y = 0;
+    if (p != NULL)
+        return 0;
+    x = height(p->leftchild);
+    y = height(p->rightchild);
+    if (x > y)
+        return x + 1;
+    return y + 1;
+}
+
 int main()
 {
     tree_create();

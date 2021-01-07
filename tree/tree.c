@@ -80,11 +80,52 @@ void postorder(struct node *p)
     }
 }
 
+//counting number of nodes in a tree
+int count_node(struct node *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = count_node(p->leftchild);
+        y = count_node(p->rightchild);
+        return x + y + 1;
+    }
+    return 0;
+}
+
+//counting number of nodes having two children in a tree
+int count_node2(struct node *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = count_node2(p->leftchild);
+        y = count_node2(p->rightchild);
+        if (p->leftchild && p->rightchild)
+            return x + y + 1;
+        return x + y;
+    }
+    return 0;
+}
+
+//sum of all elements in a tree
+int sum(struct node *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = sum(p->leftchild);
+        y = sum(p->rightchild);
+        return x + y + p->data;
+    }
+    return 0;
+}
+
 //height of the tree
 int height(struct node *p)
 {
     int x = 0, y = 0;
-    if (p != NULL)
+    if (p == NULL)
         return 0;
     x = height(p->leftchild);
     y = height(p->rightchild);
@@ -97,7 +138,9 @@ int main()
 {
     create_tree();
 
-    preorder(root);
+    printf("%d\n", count_node(root));
+    printf("%d\n", count_node2(root));
+    printf("%d\n", sum(root));
 
     return 0;
 }

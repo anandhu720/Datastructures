@@ -11,8 +11,10 @@ public:
     void preorder(node *p);
     void postorder(node *p);
     void inorder(node *p);
-    void levelorder(node *p);
     int height(node *p);
+    int count(node *p);
+    int count2(node *p);
+    int sum(node *p);
 };
 
 //creating a tree
@@ -100,6 +102,46 @@ int tree::height(node *p)
     if (x > y)
         return x + 1;
     return y + 1;
+}
+
+//number of nodes in a tree
+int tree::count(node *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = count(p->leftchild);
+        y = count(p->rightchild);
+        return x + y + 1;
+    }
+    return 0;
+}
+
+//number of nodes which have more than one nodes
+int tree::count2(node *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = count2(p->leftchild);
+        y = count2(p->rightchild);
+        if (p->leftchild && p->rightchild)
+            return x = y + 1;
+        return x + y;
+    }
+    return 0;
+}
+
+int tree::sum(node *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = sum(p->leftchild);
+        y = sum(p->rightchild);
+        return x + y + p->data;
+    }
+    return 0;
 }
 
 int main()

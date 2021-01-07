@@ -91,6 +91,46 @@ int height(struct tnode *p)
     return y + 1;
 }
 
+//counting number of nodes in a tree
+int count(struct tnode *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = count(p->leftchild);
+        y = count(p->rightchild);
+        return x + y + 1;
+    }
+    return 0;
+}
+
+//counting number of nodes which have two child
+int count2(struct tnode *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = count2(p->leftchild);
+        y = count2(p->rightchild);
+        if (p->leftchild && p->rightchild)
+            return x + y + 1;
+        return x + y;
+    }
+}
+
+//sum of all nodes
+int sum(struct tnode *p)
+{
+    int x, y;
+    if (p)
+    {
+        x = sum(p->leftchild);
+        y = sum(p->rightchild);
+        return x + y + p->data;
+    }
+    return 0;
+}
+
 int main()
 {
     tree_create();

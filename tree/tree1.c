@@ -18,7 +18,7 @@ void tree_create()
     root->leftchild = root->rightchild = NULL;
     enqueue(root);
 
-    //entering lef and right nodes
+    //entering left and right nodes
     while (isEmpty() != 1)
     {
         p = dequeue();

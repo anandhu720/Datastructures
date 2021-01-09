@@ -4,19 +4,18 @@
 //tree node
 struct tnode
 {
-    int data;
     struct tnode *leftchild;
-    struct node *rightchild;
+    int data;
+    struct tnode *rightchild;
 };
 
 //queue node
 struct qnode
 {
-    struct tnode *data;
+    struct tnode *data; //
     struct qnode *next;
-} *frist = NULL, *rear = NULL;
+} *first = NULL, *rear = NULL;
 
-//entering to queue
 void enqueue(struct tnode *x)
 {
     struct qnode *t;
@@ -27,28 +26,27 @@ void enqueue(struct tnode *x)
     {
         t->data = x;
         t->next = NULL;
-        if (frist == NULL)
-            frist = rear = t;
+        if (first == NULL)
+            first = rear = t;
         else
         {
             rear->next = t;
-            t = rear;
+            rear = t;
         }
     }
 }
 
-//deleting element from queue
 struct tnode *dequeue()
 {
     struct tnode *x = NULL;
-    struct qnode *p = NULL;
-    if (frist == NULL)
+    struct qnode *p;
+    if (first == NULL)
         printf("queue underflow!!!!!!\n");
     else
     {
-        x = frist->data;
-        p = frist;
-        frist = frist->next;
+        x = first->data;
+        p = first;
+        first = first->next;
         free(p);
     }
     return x;
@@ -56,6 +54,6 @@ struct tnode *dequeue()
 
 int isEmpty()
 {
-    if (frist == NULL)
+    if (first == NULL)
         return 1;
 }

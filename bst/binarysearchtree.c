@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "queue.h"
+#include "q.h"
 
 struct tnode *root = NULL;
 
+//creating binary search tree
 void create_bst()
 {
     struct tnode *p, *t;
@@ -42,4 +43,23 @@ void create_bst()
             enqueue(t);
         }
     }
+}
+
+//searching binary search tree
+struct tnode *rsearch(struct tnode *t, int key)
+{
+    if (t == NULL)
+        return NULL;
+    if (key == t->data)
+        return t;
+    else if (key < t->data)
+        return rsearch(t->leftchild, key);
+    return rsearch(t->rightchild, key);
+}
+
+int main()
+{
+    create_bst();
+    long int x = (long int)rsearch(root, 15);
+    printf("%ld\n", x);
 }

@@ -57,9 +57,44 @@ struct tnode *rsearch(struct tnode *t, int key) //using recursion
     return rsearch(t->rightchild, key);
 }
 
+//inserting to a binary search tree
+void insert(struct tnode *t, int key)
+{
+    struct tnode *r = NULL;
+    struct tnode *p;
+    while (t != NULL)
+    {
+        r = t;
+        if (key == t->data)
+            return;
+        else if (key < t->data)
+            t = t->leftchild;
+        else
+            t = t->rightchild;
+    }
+    p = (struct tnode *)malloc(sizeof(struct tnode));
+    p->data = key;
+    p->leftchild = p->rightchild = NULL;
+    if (key < r->data)
+        r->leftchild = p;
+    else
+        r->rightchild = p;
+}
+
+//viewing tree in inorder
+void inorder(struct tnode *t)
+{
+    if (t != NULL)
+    {
+        inorder(t->leftchild);
+        printf("%d ", t->data);
+        inorder(t->rightchild);
+    }
+}
+
 int main()
 {
     create_bst();
-    long int x = (long int)rsearch(root, 15);
-    printf("%ld\n", x);
+    insert(root, 32);
+    inorder(root);
 }

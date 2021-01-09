@@ -46,7 +46,7 @@ void create_bst()
 }
 
 //searching binary search tree
-struct tnode *rsearch(struct tnode *t, int key)
+struct tnode *rsearch(struct tnode *t, int key) //using recursion
 {
     if (t == NULL)
         return NULL;

@@ -1,49 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "q.h"
+
+struct tnode
+{
+    struct tnode *leftchild;
+    int data;
+    struct tnode *rightchild;
+};
 
 struct tnode *root = NULL;
-
-//creating binary search tree
-void create_bst()
-{
-    struct tnode *p, *t;
-    int x;
-
-    //entering root nodes
-    printf("enter the value of root node\n");
-    scanf("%d", &x);
-    root = (struct tnode *)malloc(sizeof(struct tnode));
-    root->data = x;
-    root->leftchild = root->rightchild = NULL;
-    enqueue(root);
-
-    //entering left and right nodes
-    while (isEmpty() != 1)
-    {
-        p = dequeue();
-        printf("enter the left child of %d\n", p->data);
-        scanf("%d", &x);
-        if (x != -1)
-        {
-            t = (struct tnode *)malloc(sizeof(struct tnode));
-            t->data = x;
-            t->leftchild = t->rightchild = NULL;
-            p->leftchild = t;
-            enqueue(t);
-        }
-        printf("enter the right child of %d\n", p->data);
-        scanf("%d", &x);
-        if (x != -1)
-        {
-            t = (struct tnode *)malloc(sizeof(struct tnode));
-            t->data = x;
-            t->leftchild = t->rightchild = NULL;
-            p->rightchild = t;
-            enqueue(t);
-        }
-    }
-}
 
 //searching binary search tree
 struct tnode *rsearch(struct tnode *t, int key) //using recursion
@@ -58,10 +23,19 @@ struct tnode *rsearch(struct tnode *t, int key) //using recursion
 }
 
 //inserting to a binary search tree
-void insert(struct tnode *t, int key)
+void insert(int key)
 {
+    struct tnode *t = root;
     struct tnode *r = NULL;
     struct tnode *p;
+    if (root == NULL)
+    {
+        p = (struct tnode *)malloc(sizeof(struct tnode));
+        p->data = key;
+        p->leftchild = p->rightchild = NULL;
+        root = p;
+        return;
+    }
     while (t != NULL)
     {
         r = t;
@@ -94,7 +68,9 @@ void inorder(struct tnode *t)
 
 int main()
 {
-    create_bst();
-    insert(root, 32);
+    insert(30);
+    insert(15);
+    insert(50);
+
     inorder(root);
 }

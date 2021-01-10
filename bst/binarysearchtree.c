@@ -66,11 +66,85 @@ void inorder(struct tnode *t)
     }
 }
 
+//finding height of a tree
+int height(struct tnode *p)
+{
+    int x = 0, y = 0;
+    if (p == NULL)
+        return 0;
+    x = height(p->leftchild);
+    y = height(p->rightchild);
+    if (x > y)
+        return x + 1;
+    return y + 1;
+}
+
+//finding predicesser
+struct tnode *inpre(struct tnode *p)
+{
+    while (p && p->rightchild != NULL)
+    {
+        p = p->rightchild;
+    }
+    return p;
+}
+
+//finding succserr
+struct tnode *insucc(struct tnode *p)
+{
+    while (p && p->leftchild != NULL)
+    {
+        p = p->leftchild;
+    }
+    return p;
+}
+
+//deleting functions
+
+///bug.....................................................................
+struct tnode *delete_node(struct tnode *p, int key)
+{
+    struct tnode *q;
+    if (p == NULL)
+        return NULL;
+    if (p->leftchild == NULL && p->rightchild == NULL)
+    {
+        if (p == root)
+            root = NULL;
+        free(p);
+        return NULL;
+    }
+    if (key < p->data)
+        p->leftchild = delete_node(p->leftchild, key);
+    else if (key > p->data)
+        p->rightchild = delete_node(p->rightchild, key);
+    else
+    {
+        if (height(p->leftchild) > height(p->rightchild))
+        {
+            q = inpre(p->leftchild);
+            p->data = q->data;
+            p->leftchild = delete_node(p->leftchild, q->data);
+        }
+        else
+        {
+            q = insucc(p->rightchild);
+            p->data = q->data;
+            p->rightchild = delete_node(p->rightchild, q->data);
+        }
+        return p;
+    }
+}
+
 int main()
 {
-    insert(30);
-    insert(15);
     insert(50);
+    insert(10);
+    insert(40);
+    insert(20);
+    insert(30);
+
+    delete_node(root, 50);
 
     inorder(root);
 }

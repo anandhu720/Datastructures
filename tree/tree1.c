@@ -82,7 +82,7 @@ void postorder(struct tnode *p)
 int height(struct tnode *p)
 {
     int x = 0, y = 0;
-    if (p != NULL)
+    if (p == NULL)
         return 0;
     x = height(p->leftchild);
     y = height(p->rightchild);

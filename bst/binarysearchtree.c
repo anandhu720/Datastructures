@@ -55,6 +55,25 @@ void insert(int key)
         r->rightchild = p;
 }
 
+//recursive function for insert tree
+struct tnode *rinsert(struct tnode *p, int key)
+{
+    struct tnode *t;
+    if (p == NULL)
+    {
+        t = (struct tnode *)malloc(sizeof(struct tnode));
+        t->data = key;
+        t->leftchild = t->rightchild = NULL;
+        return t;
+    }
+    if (key < p->data)
+        p->leftchild = rinsert(p->leftchild, key);
+    else if (key > p->data)
+        p->rightchild = rinsert(p->rightchild, key);
+
+    return p;
+}
+
 //viewing tree in inorder
 void inorder(struct tnode *t)
 {
@@ -100,8 +119,6 @@ struct tnode *insucc(struct tnode *p)
 }
 
 //deleting functions
-
-///bug.....................................................................
 struct tnode *delete_node(struct tnode *p, int key)
 {
     struct tnode *q;
@@ -132,17 +149,17 @@ struct tnode *delete_node(struct tnode *p, int key)
             p->data = q->data;
             p->rightchild = delete_node(p->rightchild, q->data);
         }
-        return p;
     }
+    return p;
 }
 
 int main()
 {
-    insert(50);
-    insert(10);
-    insert(40);
-    insert(20);
-    insert(30);
+    root = rinsert(root, 50);
+    rinsert(root, 10);
+    rinsert(root, 40);
+    rinsert(root, 20);
+    rinsert(root, 30);
 
     delete_node(root, 50);
 

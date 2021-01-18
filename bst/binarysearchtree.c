@@ -26,7 +26,7 @@ struct tnode *rsearch(struct tnode *t, int key) //using recursion
 void insert(int key)
 {
     struct tnode *t = root;
-    struct tnode *r = NULL;
+    struct tnode *r = NULL; //tail pointer
     struct tnode *p;
     if (root == NULL)
     {

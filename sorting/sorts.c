@@ -47,12 +47,27 @@ int insertionsort(int a[], int n)
     }
 }
 
+//selectionsort
+void selectionsort(int a[], int n)
+{
+    int i, j, k;
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = k = i; j < n; j++)
+        {
+            if (a[j] < a[k])
+                k = j;
+        }
+        swap_no(&a[i], &a[k]);
+    }
+}
+
 int main()
 {
     int a[] = {3, 7, 9, 10, 6, 5, 12, 4, 11, 2};
     int n = 10;
 
-    insertionsort(a, n);
+    selectionsort(a, n);
 
     //printing array
     for (int i = 0; i < n; i++)

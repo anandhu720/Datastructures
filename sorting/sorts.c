@@ -62,12 +62,50 @@ void selectionsort(int a[], int n)
     }
 }
 
+//quick sort
+
+//partion
+int partion(int a[], int l, int h)
+{
+    int pivot = a[l];
+    int i = l, j = h;
+    do
+    {
+        do
+        {
+            i++;
+        } while (a[i] <= pivot);
+        do
+        {
+            j--;
+        } while (a[j] > pivot);
+
+        if (i < j)
+            swap_no(&a[i], &a[j]);
+    } while (i < j);
+
+    swap_no(&a[l], &a[j]);
+    return j;
+}
+
+//main quick sort
+void quicksort(int a[], int l, int h)
+{
+    int j;
+    if (l < h)
+    {
+        j = partion(a, l, h);
+        quicksort(a, l, j);
+        quicksort(a, j + 1, h);
+    }
+}
+
 int main()
 {
     int a[] = {3, 7, 9, 10, 6, 5, 12, 4, 11, 2};
-    int n = 10;
+    int n = 10, i;
 
-    selectionsort(a, n);
+    quicksort(a, 0, n);
 
     //printing array
     for (int i = 0; i < n; i++)

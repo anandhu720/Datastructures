@@ -128,7 +128,7 @@ void merge(int a[], int l, int mid, int h)
 }
 
 //mergesort in array
-int mergesort(int a[], int n)
+void mergesort(int a[], int n)
 {
     int p, i, l, mid, h;
     for (p = 2; p <= n; p = p * 2)
@@ -145,12 +145,25 @@ int mergesort(int a[], int n)
         merge(a, 0, p / 2 - 1, n - 1);
 }
 
+//recursive merge sort
+void rmergesort(int a[], int l, int h)
+{
+    int mid;
+    if (l < h)
+    {
+        mid = (l + h) / 2;
+        rmergesort(a, l, mid);
+        rmergesort(a, mid + 1, h);
+        merge(a, l, mid, h);
+    }
+}
+
 int main()
 {
     int a[] = {3, 7, 9, 10, 6, 5, 12, 4, 11, 2};
     int n = 10, i;
 
-    mergesort(a, n);
+    rmergesort(a, 0, 10);
 
     //printing array
     for (int i = 0; i < n; i++)

@@ -127,7 +127,7 @@ void merge(int a[], int l, int mid, int h)
         a[i] = b[i];
 }
 
-//mergesort
+//mergesort in array
 int mergesort(int a[], int n)
 {
     int p, i, l, mid, h;

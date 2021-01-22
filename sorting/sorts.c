@@ -158,12 +158,48 @@ void rmergesort(int a[], int l, int h)
     }
 }
 
+int findmax(int a[], int n) //to find max value element from array
+{
+    int max = a[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (a[i] > max)
+            max = a[i];
+    }
+    return max;
+}
+
+//count sorting
+void countsort(int a[], int n)
+{
+    int max;
+    int *c;
+    max = findmax(a, n);
+    c = (int *)malloc((max + 1) * sizeof(int));
+
+    for (int i = 0; i < max + 1; i++)
+        c[i] = 0;
+    for (int i = 0; i < n; i++)
+        c[a[i]]++;
+    int i = 0, j = 0;
+    while (j < max + 1)
+    {
+        if (c[j] > 0)
+        {
+            a[i++] = j;
+            c[j]--;
+        }
+        else
+            j++;
+    }
+}
+
 int main()
 {
     int a[] = {3, 7, 9, 10, 6, 5, 12, 4, 11, 2};
     int n = 10, i;
 
-    rmergesort(a, 0, 10);
+    countsort(a, n);
 
     //printing array
     for (int i = 0; i < n; i++)

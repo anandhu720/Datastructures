@@ -21,6 +21,7 @@ public:
     int hash(int key);
     void Insert(int key);
     int Search(int key);
+    void delete_node(int key);
     ~HashTable();
 };
 
@@ -103,6 +104,32 @@ HashTable::~HashTable()
     delete[] HT;
 }
 
+void HashTable::delete_node(int key)
+{
+    int hIdx = hash(key);
+    if (HT[hIdx] == 0)
+        cout << "element not found!!" << endl;
+    else
+    {
+        Node *p = HT[hIdx];
+        Node *q = HT[hIdx];
+        while (p != nullptr && p->data < key)
+        {
+            q = p;
+            p = p->next;
+        }
+        if (p == q)
+        {
+            delete q;
+        }
+        else
+        {
+            q->next = p->next;
+            delete p;
+        }
+    }
+}
+
 int main()
 {
     int A[] = {16, 12, 25, 39, 6, 122, 5, 68, 75};
@@ -118,6 +145,10 @@ int main()
     cout << "Key: " << key << ", Value: " << value << endl;
     cout << "Unsuccessful Search" << endl;
     key = 95;
+    value = H.Search(key);
+    cout << "Key: " << key << ", Value: " << value << endl;
+    H.delete_node(6);
+    key = 6;
     value = H.Search(key);
     cout << "Key: " << key << ", Value: " << value << endl;
 

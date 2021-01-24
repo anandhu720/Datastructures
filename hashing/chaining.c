@@ -122,7 +122,7 @@ int main()
     key = 95;
     value = search(key);
     printf("Key:%d , value:%d \n", key, value);
-    delete (16);
+    delete (5);
     key = 6;
     value = search(key);
     printf("Key:%d , value:%d \n", key, value);

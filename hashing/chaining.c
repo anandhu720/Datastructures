@@ -60,3 +60,20 @@ void insert(int key)
         }
     }
 }
+
+//searching an element in hashtable
+int search(int key)
+{
+    int hidx = hash(key);
+    struct node *p;
+    p = ht[hidx];
+    while (p)
+    {
+        if (p->data == key)
+        {
+            return p->data;
+        }
+        p = p->next;
+    }
+    return -1;
+}

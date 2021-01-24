@@ -78,6 +78,33 @@ int search(int key)
     return -1;
 }
 
+//deleting function from a hashtable
+void delete (int key)
+{
+    int hidx = hash(key);
+    if (ht[hidx] == 0)
+        printf("element not found!!!\n");
+    else
+    {
+        struct node *p = ht[hidx];
+        struct node *q = ht[hidx];
+        while (p != NULL && p->data < key)
+        {
+            q = p;
+            p = p->next;
+        }
+        if (p == q)
+        {
+            free(p);
+        }
+        else
+        {
+            q->next = p->next;
+            free(p);
+        }
+    }
+}
+
 int main()
 {
     int a[] = {16, 25, 12, 39, 6, 122, 5, 68, 75};
@@ -93,6 +120,10 @@ int main()
     int value = search(key);
     printf("Key:%d , value:%d \n", key, value);
     key = 95;
+    value = search(key);
+    printf("Key:%d , value:%d \n", key, value);
+    delete (16);
+    key = 6;
     value = search(key);
     printf("Key:%d , value:%d \n", key, value);
 

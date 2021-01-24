@@ -42,5 +42,21 @@ void insert(int key)
         struct node *p = ht[hidx];
         struct node *q = ht[hidx];
         //traverse to find inset position
+        while (p != NULL && p->data < key)
+        {
+            q = p;
+            p = p->next;
+        }
+        //case 2: insertion in the frist position
+        if (q == ht[hidx])
+        {
+            t->next = ht[hidx];
+            ht[hidx] = t;
+        }
+        else
+        {
+            t->next = q->next;
+            q->next = t;
+        }
     }
 }

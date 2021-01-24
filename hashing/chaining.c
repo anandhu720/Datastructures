@@ -82,6 +82,7 @@ int main()
 {
     int a[] = {16, 25, 12, 39, 6, 122, 5, 68, 75};
     int n = sizeof(a) / sizeof(a[0]);
+    hashtable();
     for (int i = 0; i < n; i++)
     {
         insert(a[i]);

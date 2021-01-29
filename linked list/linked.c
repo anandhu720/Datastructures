@@ -398,9 +398,9 @@ int if_loop(struct node *f)
 
 int looplenght(struct node *q)
 {
-    struct node *temp = q->next;
+    struct node *temp = q;
     int rev = 1;
-    while (temp != q)
+    while (temp->next != q)
     {
         rev++;
         temp = temp->next;
@@ -420,10 +420,8 @@ int if_loop_2(struct node *f)
             q = q->next;
     } while (p && q && p != q);
     if (p == q)
-    {
-        int lenght = looplenght(q);
-        return lenght;
-    }
+        return looplenght(p);
+    return 0;
 }
 
 int main()
@@ -431,13 +429,12 @@ int main()
     struct node *t1, *t2;
     int a[] = {1, 2, 3, 4, 5};
 
-    create(a, 4);
+    create(a, 5);
 
+    /*  making loop in linked list
     t1 = head->next;
     t2 = head->next->next->next;
-    t2->next = t1;
+    t2->next = t1;*/
 
     printf("%d\n", if_loop_2(head));
-
-    display(head);
 }

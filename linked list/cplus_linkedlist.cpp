@@ -39,6 +39,9 @@ public:
     void reverse_element();
     void reverse_link();
     void reverse_recursion(node *q, node *p);
+    bool if_loop();
+    int loolenght(node *q);
+    int if_loop_2();
 };
 
 linkedlist::linkedlist(int a[], int n)
@@ -341,6 +344,24 @@ void linkedlist::reverse_recursion(node *q, node *p) //rversing by recursion
     {
         head = q;
     }
+}
+
+//checking wheather linked list have a loop
+bool linkedlist::if_loop()
+{
+    node *f = head;
+    node *p, *q;
+    p = q = f;
+    do
+    {
+        p = p->next;
+        q = q->next;
+        if (q->next != NULL)
+            q = q->next;
+    } while (p && q && p != q);
+    if (p == q)
+        return true;
+    return false;
 }
 
 int main()

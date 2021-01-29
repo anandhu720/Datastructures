@@ -40,7 +40,7 @@ public:
     void reverse_link();
     void reverse_recursion(node *q, node *p);
     bool if_loop();
-    int loolenght(node *q);
+    int looplenght(node *q);
     int if_loop_2();
 };
 
@@ -362,6 +362,36 @@ bool linkedlist::if_loop()
     if (p == q)
         return true;
     return false;
+}
+
+//checking the lenght of loop in linked list
+int linkedlist::looplenght(node *q)
+{
+    node *temp = q;
+    int rev = 1;
+    while (temp->next != q)
+    {
+        rev++;
+        temp = temp->next;
+    }
+    return rev;
+}
+
+int linkedlist::if_loop_2()
+{
+    node *f = head;
+    node *p, *q;
+    p = q = f;
+    do
+    {
+        p = p->next;
+        q = q->next;
+        if (q->next != NULL)
+            q = q->next;
+    } while (p && q && q != p);
+    if (p == q)
+        return looplenght(p);
+    return 0;
 }
 
 int main()

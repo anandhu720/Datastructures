@@ -394,7 +394,7 @@ int if_loop(struct node *f)
         return 0;
 }
 
-//checking the lenght if loop in linked List
+//checking the lenght of loop in linked List
 
 int looplenght(struct node *q)
 {

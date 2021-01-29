@@ -394,21 +394,50 @@ int if_loop(struct node *f)
         return 0;
 }
 
+//checking the lenght if loop in linked List
+
+int looplenght(struct node *q)
+{
+    struct node *temp = q->next;
+    int rev = 1;
+    while (temp != q)
+    {
+        rev++;
+        temp = temp->next;
+    }
+    return rev;
+}
+
+int if_loop_2(struct node *f)
+{
+    struct node *p, *q;
+    p = q = f;
+    do
+    {
+        p = p->next;
+        q = q->next;
+        if (q->next != NULL)
+            q = q->next;
+    } while (p && q && p != q);
+    if (p == q)
+    {
+        int lenght = looplenght(q);
+        return lenght;
+    }
+}
+
 int main()
 {
     struct node *t1, *t2;
-    int a[] = {1, 3, 5, 7};
+    int a[] = {1, 2, 3, 4, 5};
 
     create(a, 4);
 
-    /* //created a loop in linked list
-    t1 = head->next->next;
+    t1 = head->next;
     t2 = head->next->next->next;
     t2->next = t1;
 
-    printf("%d\n", if_loop(head));  */
-
-    delete_node(head, 1);
+    printf("%d\n", if_loop_2(head));
 
     display(head);
 }

@@ -36,6 +36,7 @@ public:
     int delete_node(int index);
     int if_sorted();
     void delete_duplicates();
+    void delete_duplicates_unsorted();
     void reverse_element();
     void reverse_link();
     void reverse_recursion(node *q, node *p);
@@ -295,6 +296,31 @@ void linkedlist::delete_duplicates() //deleting duplicates in linked list
             p->next = q->next;
             delete q;
             q = p->next;
+        }
+    }
+}
+
+void linkedlist::delete_duplicates_unsorted() //deleting duplicates in unsorted linked List
+{
+    node *p = head;
+    while (p != nullptr)
+    {
+        node *q = p->next;
+        node *t = p;
+        while (q != NULL)
+        {
+            if (p->data == q->data)
+            {
+                t->next = q->next;
+                delete q;
+                q = t->next;
+            }
+            else
+            {
+                q = q->next;
+                t = t->next;
+            }
+            p = p->next;
         }
     }
 }

@@ -258,7 +258,7 @@ int ifsorted(struct node *p)
     return 1;
 }
 
-//deleting duplicate elemnts in linked list
+//deleting duplicate elemnts in sorted linked list
 void delete_duplicate(struct node *p)
 {
     struct node *q = p->next;
@@ -275,6 +275,32 @@ void delete_duplicate(struct node *p)
             free(q);
             q = p->next;
         }
+    }
+}
+
+//deleting duplicates in unsorted linked List
+int unsort_deleting(struct node *f)
+{
+    struct node *p = f;
+    while (p != NULL)
+    {
+        struct node *q = p->next;
+        struct node *t = p;
+        while (q != NULL)
+        {
+            if (p->data == q->data)
+            {
+                t->next = q->next;
+                free(q);
+                q = t->next;
+            }
+            else
+            {
+                q = q->next;
+                t = t->next;
+            }
+        }
+        p = p->next;
     }
 }
 
@@ -427,7 +453,7 @@ int if_loop_2(struct node *f)
 int main()
 {
     struct node *t1, *t2;
-    int a[] = {1, 2, 3, 4, 5};
+    int a[] = {3, 3, 3, 3, 3};
 
     create(a, 5);
 
@@ -436,5 +462,7 @@ int main()
     t2 = head->next->next->next;
     t2->next = t1; */
 
-    printf("%d\n", if_loop_2(head));
+    unsort_deleting(head);
+
+    display(head);
 }

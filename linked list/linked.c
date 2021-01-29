@@ -434,7 +434,7 @@ int main()
     /*  making loop in linked list
     t1 = head->next;
     t2 = head->next->next->next;
-    t2->next = t1;*/
+    t2->next = t1; */
 
     printf("%d\n", if_loop_2(head));
 }

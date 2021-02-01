@@ -442,7 +442,7 @@ int if_loop_2(struct node *f)
     {
         p = p->next;
         q = q->next;
-        if (q->next != NULL)
+        if (q != NULL)
             q = q->next;
     } while (p && q && p != q);
     if (p == q)
@@ -453,16 +453,14 @@ int if_loop_2(struct node *f)
 int main()
 {
     struct node *t1, *t2;
-    int a[] = {3, 3, 3, 3, 3};
-
-    create(a, 5);
+    int a[4] = {3, 4, 5, 6};
+    int n = sizeof(a);
+    create2(a, n);
 
     /*  making loop in linked list
     t1 = head->next;
     t2 = head->next->next->next;
     t2->next = t1; */
-
-    unsort_deleting(head);
 
     display(head);
 }

@@ -5,7 +5,7 @@ struct node
 {
     int data;
     struct node *next;
-} *head = NULL;
+} *head = NULL, *head2 = NULL;
 
 void create(int a[], int n) //creating circular linked list
 {
@@ -130,13 +130,55 @@ int delete_node(struct node *p, int index) //deleting node from linked list
     }
     return x;
 }
+
+//split a linked list into two halfs
+//if nodes are odd frist will have one more node
+void split_linkedlist(struct node *p)
+{
+    if (p == NULL)
+        return;
+
+    struct node *last = head;
+    while (last->next != head)
+        last = last->next;
+
+    int len = lenght(head);
+    if (len % 2 == 0)
+    {
+        len /= 2;
+        struct node *q = NULL;
+        while (len > 0)
+        {
+            q = p;
+            p = p->next;
+            len--;
+        }
+        q->next = head;
+        head2 = p;
+        last->next = head2;
+    }
+    else
+    {
+        len /= 2;
+        len++;
+        struct node *q = NULL;
+        while (len > 0)
+        {
+            q = p;
+            p = p->next;
+            len--;
+        }
+        q->next = head;
+        head2 = p;
+        last->next = head2;
+    }
+}
+
 /* code */
 int main()
 {
     int a[] = {2, 4, 6, 8, 10};
     create(a, 5);
-    delete_node(head, 1);
-
-    rdisplay(head);
+    split_linkedlist(head);
     return 0;
 }

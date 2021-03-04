@@ -21,6 +21,7 @@ int main()
         cout << itr->first << " " << itr->second << endl;
     }
 
+    //iterating through map
     cout << "value found" << endl;
     map<int, string>::iterator itr1;
     itr1 = m.find(3);

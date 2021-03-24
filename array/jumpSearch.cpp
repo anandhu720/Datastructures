@@ -24,6 +24,6 @@ int jumpSearch(int a[], int n, int key)
 int main()
 {
     int a[7] = {2, 4, 6, 12, 16, 77, 100};
-    int n = 7;
+    int n = sizeof(a) / sizeof(a[0]);
     cout << jumpSearch(a, n, 16) << "\n";
 }

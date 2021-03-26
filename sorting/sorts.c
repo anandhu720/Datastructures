@@ -10,7 +10,7 @@ void swap_no(int *x, int *y)
 }
 
 //bubble sort
-int bubblesort(int a[], int n)
+void bubblesort(int a[], int n)
 {
     int i, j;
     int flag; //used to check wheather give array is sorted or not
@@ -31,7 +31,7 @@ int bubblesort(int a[], int n)
 }
 
 //insertion sort
-int insertionsort(int a[], int n)
+void insertionsort(int a[], int n)
 {
     int j, i, x;
     for (i = 0; i < n; i++)
@@ -59,6 +59,28 @@ void selectionsort(int a[], int n)
                 k = j;
         }
         swap_no(&a[i], &a[k]);
+    }
+}
+
+void selectionSortStable(int a[], int n)
+{
+    int i, j, min_index;
+    for (i = 0; i < n - 1; i++)
+    {
+        min_index = i;
+        for (j = i + 1; j < n; j++)
+        {
+            if (a[j] < a[min_index])
+                min_index = j;
+        }
+
+        int key = min_index;
+        while (min_index > i)
+        {
+            a[min_index] = a[min_index - 1];
+            min_index--;
+        }
+        a[i] = key;
     }
 }
 

@@ -239,9 +239,9 @@ void shellsort(int a[], int n)
 int main()
 {
     int a[] = {3, 7, 9, 10, 6, 5, 12, 4, 11, 2};
-    int n = 10, i;
+    int n = sizeof(a) / sizeof(a[0]);
 
-    shellsort(a, n);
+    rmergesort(a, 0, n - 1);
 
     //printing array
     for (int i = 0; i < n; i++)

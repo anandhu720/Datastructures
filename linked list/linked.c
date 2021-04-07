@@ -1,11 +1,11 @@
-#include <stdio.h> 
-#include <stdlib.h> 
+#include <stdio.h>
+#include <stdlib.h>
 
-struct node {
+struct node
+{
     int data;
     struct node *next;
 } *head = NULL, *head2 = NULL, *third = NULL;
-
 
 //creating linkedList
 void create(int a[], int n)
@@ -142,7 +142,7 @@ int max(struct node *p)
 //max element by recursion
 int rmax(struct node *p)
 {
-    OPint x;
+    int x;
 
     if (p == NULL)
         return 0;

@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct array
+struct array  //creating dynamic array
 {
     int *a;
     int size;
     int lenght;
 };
 
-void display(struct array arr)
+void display(struct array arr)  //displaying array
 {
     int i;
     for (i = 0; i < arr.lenght; i++)

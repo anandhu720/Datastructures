@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include<algorithm>
 using namespace std;
 int main()
 {
@@ -22,11 +23,17 @@ int main()
         cout << x << " ";
     cout << endl;
 
+    cout<<"rotated vector to left"<<endl;
+    int rotL = 3;
+    rotate(v.begin(),v.begin()+rotL,v.end());
+
     cout << "Using Iterator" << endl;
     vector<int>::iterator itr;
     for (itr = v.begin(); itr != v.end(); itr++)
         cout << (*itr) << " ";
     cout << endl;
+
+
 
     return 0;
 }

@@ -279,7 +279,7 @@ void delete_duplicate(struct node *p)
 }
 
 //deleting duplicates in unsorted linked List
-int unsort_deleting(struct node *f)
+void unsort_deleting(struct node *f)
 {
     struct node *p = f;
     while (p != NULL)
@@ -364,7 +364,7 @@ void concat(struct node *p, struct node *q)
 
 //merging two sorted linked list
 
-int merge(struct node *p, struct node *q)
+void merge(struct node *p, struct node *q)
 {
     struct node *last;
     if (p->data < q->data)
@@ -397,7 +397,7 @@ int merge(struct node *p, struct node *q)
         }
     }
     if (p != NULL)
-        last->next = q;
+        last->next = p;
     else
         last->next = q;
 }

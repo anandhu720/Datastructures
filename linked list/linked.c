@@ -450,6 +450,19 @@ int if_loop_2(struct node *f)
     return 0;
 }
 
+//getting data from linked list from the position given from tail
+int getNodeFromBack(struct node *p,int lastIndex){
+    int index = 0;
+    struct node *current = p;
+    struct node *result = p;
+    while(current!=NULL){
+        current = current->next;
+        if(index++>lastIndex)
+            result=result->next;
+    }
+    return result->data;
+}
+
 int main()
 {
     struct node *t1, *t2;

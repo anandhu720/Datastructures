@@ -249,7 +249,7 @@ void deletingduplicates(struct node *p)
     }
 }
 
-//reversing a dobly linked list
+//reversing a doubly linked list
 void reverse(struct node *p) //segamentation core dump
 {
     struct node *t;

@@ -250,20 +250,23 @@ void deletingduplicates(struct node *p)
 }
 
 //reversing a doubly linked list
-void reverse(struct node *p) //segamentation core dump
+struct node * reverse(struct node *head)
 {
-    struct node *t;
-    while (p != NULL)
-    {
-        t = p->next;
-        p->next = p->prev;
-        p->prev = t;
-        p = p->prev;
-        if (p->next == NULL && p != NULL)
-        {
-            head = p;
-        }
+    struct node *temp = NULL;
+    struct node *current = head;
+
+    while(current != NULL){
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+        current = current->prev;
     }
+
+    if(temp != NULL)
+        head = temp->prev;
+
+    return head;
+
 }
 
 //main function

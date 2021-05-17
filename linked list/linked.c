@@ -243,6 +243,20 @@ int delete_node(struct node *p, int index)
     }
 }
 
+//deleting a node without head node 
+void delete_without_head(struct node *node){
+    if(node == NULL)
+        return;
+    if(node->next == NULL)
+        return;
+    
+    struct node *temp = node->next;
+
+    node->data = temp->data;
+    node->next = temp->next;
+    free(temp);
+}
+
 //checking if linked list is sorted or not
 //only for sorted linked list
 int ifsorted(struct node *p)

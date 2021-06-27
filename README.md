@@ -8,7 +8,7 @@ All the code is wriiten mostly in C and C++.
 
 ```bash
 
-$git clone https://github.com/anandhu720/datastructures.git
+git clone https://github.com/anandhu720/datastructures.git
 
 ```
 

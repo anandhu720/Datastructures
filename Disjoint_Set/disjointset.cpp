@@ -23,7 +23,7 @@ public:
         return parent[node] = findUPar(parent[node]); // doing path comp
     }
 
-    void unionByRank(int u, int v)
+    void unionByRange(int u, int v)
     {
         int ulp_u = findUPar(u);
         int ulp_v = findUPar(v);
@@ -72,11 +72,11 @@ int main()
 
     DisjointSet ds(7);
 
-    ds.unionByRank(1, 2);
-    ds.unionByRank(2, 3);
-    ds.unionByRank(4, 5);
-    ds.unionByRank(6, 7);
-    ds.unionByRank(5, 6);
+    ds.unionBySize(1, 2);
+    ds.unionBySize(2, 3);
+    ds.unionBySize(4, 5);
+    ds.unionBySize(6, 7);
+    ds.unionBySize(5, 6);
     if (ds.findUPar(3) == ds.findUPar(7))
     {
         cout << "Same" << endl;
@@ -86,7 +86,7 @@ int main()
         cout << "Not Same" << endl;
     }
 
-    ds.unionByRank(3, 7);
+    ds.unionBySize(3, 7);
 
     if (ds.findUPar(3) == ds.findUPar(7))
     {
